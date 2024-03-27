@@ -1,0 +1,11 @@
+FROM jupyter/datascience-notebook
+
+RUN pip install numpy matplotlib geopandas mapclassify seaborn
+RUN pip install mysql-connector-python pymysql
+
+COPY  ETLs/dataset /home/jovyan/datasets
+
+# nota: en la carpeta innovador ejecutar:
+# docker run --rm -p 8888:8888 -d --name geopandas -v ${PWD}/ETLs/:/home/jovyan/work/ geopandas_etl
+# como el contenedor corre en modo detached (no muestra nada) para ver el token
+# es necesario ejecutar: docker logs geopandas y de esta forma ver los tokens
